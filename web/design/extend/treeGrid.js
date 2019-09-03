@@ -664,7 +664,7 @@ layui.config({}).extend({}).define(['laytpl', 'laypage', 'layer', 'form'], funct
 					tds_fixed = _result._tds_l,
 					tds_fixed_r = _result._tds_r
 				var tr = that.layBody.find('tr[data-index=' + oi + ']');
-				var tr_l = that.layFixLeft.find('tr[data-index=' + oi + ']'); //laxse@outlook.com 
+				var tr_l = that.layFixLeft.find('tr[data-index=' + oi + ']'); //laxse@outlook.com
 				var tr_r = that.layFixRight.find('tr[data-index=' + oi + ']');
 				$(tr).html(tds);
 				$(tr_l).html(tds_fixed);
@@ -1586,11 +1586,11 @@ layui.config({}).extend({}).define(['laytpl', 'laypage', 'layer', 'form'], funct
 	 * 2、显示状态（显示或隐藏） 显示状态根据父级节点控制，父级节点是显示并且打开状态的则显示，否则不显示，但不影响其打开状态
 	 */
 	Class.prototype.treeNodeOpen = function(o, isOpen) {
-		var that = this,
-			tr = that.layBody.find('tr[data-index="' + o[table.config.indexName] + '"]');
 		if (!o) {
 			return
 		}
+		var that = this,
+			tr = that.layBody.find('tr[data-index="' + o[table.config.indexName] + '"]');
 		o[table.config.cols.isOpen] = isOpen;
 		//处理树结构
 		var fa = function(e) {
@@ -1829,6 +1829,9 @@ layui.config({}).extend({}).define(['laytpl', 'laypage', 'layer', 'form'], funct
 	 * @param callback
 	 */
 	Class.prototype.renderTreeConvertShowName = function(o) {
+		if (!o) {
+			return
+		}
 		var that = this,
 			options = that.config,
 			m = options.elem,
